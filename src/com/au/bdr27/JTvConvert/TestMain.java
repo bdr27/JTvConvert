@@ -23,7 +23,8 @@ public class TestMain {
             phateOfThePharoh2o3 = showInfo.getEpisodeName(4, 12);
             System.out.println(phateOfThePharoh2o3);
             System.out.println("I Got Shows");
-            AFolderStructure struct = new FolderPerDisc("E:\\VIDEO", "YU_GI_OH_SEASON[3]_DISC[3-7]");
+            //Potentially use enum for type and whatnot
+            AFolderStructure struct = new FolderPerDisc("E:\\VIDEO", "YU_GI_OH_SEASON\"{\"type\":\"season\",\"min\":3\"max\"3}\"_DISC[3-7]");
             ArrayList<FileInfo> files = struct.getFilesToConvert();
             System.out.println("I got files");
         } catch (Exception ex) {

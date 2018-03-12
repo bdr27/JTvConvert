@@ -13,14 +13,14 @@ import java.util.ArrayList;
  */
 public abstract class AFolderStructure {
     protected final String folderRoot;
-    protected final String pattern;
+    protected final String config;
     protected ArrayList<FileInfo> filesToConvert;
 //Need an object for original name and what to change into to
     
     //Pattern will contrain "season" and "disc" to show where the discs are and seaons are
-    public AFolderStructure(String folderRoot, String pattern){
+    public AFolderStructure(String folderRoot, String config){
         this.folderRoot = folderRoot;
-        this.pattern = pattern;
+        this.config = config;
     }
     
     public abstract void populateFilesToConvert() throws Exception;

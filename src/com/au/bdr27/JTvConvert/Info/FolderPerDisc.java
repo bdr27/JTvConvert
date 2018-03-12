@@ -18,17 +18,27 @@ import jdk.nashorn.internal.runtime.regexp.joni.Regex;
  * @author Brendan
  */
 public class FolderPerDisc extends AFolderStructure {
+    private String pattern;
+    private final File directory;
 
-    File directory;
-
-    public FolderPerDisc(String folderRoot, String pattern) {
-        super(folderRoot, pattern);
+    public FolderPerDisc(String folderRoot, String config) {
+        super(folderRoot, config);
         directory = new File(folderRoot);
     }
 
+    private void populatePattern(){
+        //Needs to be in a loop possibly going to change config to completely json
+        int begining = config.indexOf("\"{");
+        int end = config.indexOf("}\"") + 2;
+        String json = config.substring(begining, end);
+        pattern = config.replace(json, "[3-3]");
+        System.out.println("Begin: " + begining + "End: " + end);
+    }
+    
     //This method needs to be rethinked
     @Override
     public void populateFilesToConvert() throws IOException {
+        populatePattern();
         filesToConvert = new ArrayList<>();
         FileFilter fileFilter = (file) -> file.isDirectory() && file.getName().matches(pattern);
         File[] directories = directory.listFiles(fileFilter);
