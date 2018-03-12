@@ -11,21 +11,21 @@ import java.util.ArrayList;
  *
  * @author Brendan
  */
-public abstract class ADvdFolderInfo {
-    private final String folderRoot;
-    private final String pattern;
-    private ArrayList<FileInfo> filesToConvert;
+public abstract class AFolderStructure {
+    protected final String folderRoot;
+    protected final String pattern;
+    protected ArrayList<FileInfo> filesToConvert;
 //Need an object for original name and what to change into to
     
     //Pattern will contrain "season" and "disc" to show where the discs are and seaons are
-    public ADvdFolderInfo(String folderRoot, String pattern){
+    public AFolderStructure(String folderRoot, String pattern){
         this.folderRoot = folderRoot;
         this.pattern = pattern;
     }
     
-    public abstract void populateFilesToConvert();
+    public abstract void populateFilesToConvert() throws Exception;
     
-    public ArrayList<FileInfo> getFilesToConvert(){
+    public ArrayList<FileInfo> getFilesToConvert() throws Exception{
         if(filesToConvert == null){
             populateFilesToConvert();
         }
